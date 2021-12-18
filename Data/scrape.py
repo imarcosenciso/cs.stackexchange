@@ -2,6 +2,7 @@
 
 This scraper role is to recieve a tag and return its
 description, using Wikipedia's API: MediaWiki API.
+<<<<<<< HEAD
 
     Functions
     -------
@@ -19,6 +20,25 @@ import requests
 URL = "https://en.wikipedia.org/w/api.php"  # Engish Wikipedia API endpoint
 
 # A lot of tunning has gone into it and they return good results for the most part. Better not touch.
+=======
+"""
+import requests
+
+
+test_tags = ["Algorithm",
+             "Big O notation",
+             "Turing Complete",
+             "cpu-pipelines",
+             "computer-architecture",
+             "database-theory",
+             "average-case",
+             "time-complexity"
+             ]
+
+URL = "https://en.wikipedia.org/w/api.php"  # Engish Wikipedia API endpoint
+
+"""A lot of tunning has gone into it and they return good results for the most part. Better not touch."""
+>>>>>>> be84accf9748ef7d7a290c679b2829f745987144
 PARAMS = {
     "action": "query",
     "generator": "prefixsearch",
@@ -33,6 +53,7 @@ PARAMS = {
 }
 
 
+<<<<<<< HEAD
 def get_description(tag: str, session: requests.Session, url: str = URL, params: dict = PARAMS) -> str:
     """Returns description of a tag
     Parameters
@@ -44,6 +65,11 @@ def get_description(tag: str, session: requests.Session, url: str = URL, params:
     """
     params["gpssearch"] = tag
     data = session.get(url=url, params=params).json()
+=======
+def get_description(tag: str) -> str:
+    PARAMS["gpssearch"] = tag
+    data = s.get(url=URL, params=PARAMS).json()
+>>>>>>> be84accf9748ef7d7a290c679b2829f745987144
 
     # Extract unknown key (each query returns a random number as key).
     key = list(data["query"]["pages"].keys())[0]
@@ -52,6 +78,7 @@ def get_description(tag: str, session: requests.Session, url: str = URL, params:
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     test_tags = ["Algorithm",
                  "Big O notation",
                  "Turing Complete",
@@ -66,5 +93,11 @@ if __name__ == "__main__":
 
     for t in test_tags:
         desc = get_description(t, S)
+=======
+    s = requests.Session()
+
+    for t in test_tags:
+        desc = get_description(t)
+>>>>>>> be84accf9748ef7d7a290c679b2829f745987144
         print(
             f"Tag: {t}.\nDescription: {desc}\n == == == == == == == == == == == == == == ==\n")
