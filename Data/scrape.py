@@ -29,7 +29,7 @@ PARAMS = {
     "explaintext": 1,
     "redirects": 1,
     "exchars": 300,
-    "cmtitle": "Category:Computer science"
+    # "cmtitle": "Category:Computer science"
 }
 
 
@@ -45,8 +45,12 @@ def get_description(tag: str, session: requests.Session, url: str = URL, params:
     params["gpssearch"] = tag
     data = session.get(url=url, params=params).json()
 
+    # Check if query returns data:
+    if "query" not in data:
+        return f"No description has been found on Wikipedia, please manually search for {tag}."
+
     # Extract unknown key (each query returns a random number as key).
-    key = list(data["query"]["pages"].keys())[0]
+    key = list(data["query"]["pages"])[0]
 
     return data["query"]["pages"][key]["extract"]
 
@@ -62,9 +66,8 @@ if __name__ == "__main__":
                  "time-complexity"
                  ]
 
-    S = requests.Session()
-
-    for t in test_tags:
-        desc = get_description(t, S)
-        print(
-            f"Tag: {t}.\nDescription: {desc}\n == == == == == == == == == == == == == == ==\n")
+    with requests.Session() as s:
+        for t in test_tags:
+            desc = get_description(t, s)
+            # print(
+            #    f"Tag: {t}.\nDescription: {desc}\n == == == == == == == == == == == == == == ==\n")
