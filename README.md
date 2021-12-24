@@ -1,2 +1,2 @@
-# stackoverflow
-Stackoverflow clone.
+# cs.stackexchange
+Stackexchange's Computer Science forum clone.
