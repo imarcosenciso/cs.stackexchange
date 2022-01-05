@@ -29,7 +29,7 @@ PARAMS = {
     "explaintext": 1,
     "redirects": 1,
     "exchars": 300,
-    # "cmtitle": "Category:Computer science"
+    "cmtitle": "Category:Computer science"
 }
 
 

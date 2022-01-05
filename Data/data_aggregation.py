@@ -2,10 +2,11 @@
 """
 
 from requests.sessions import Session
-import scrape
 import requests
 import json
 import pandas as pd
+
+import scrape
 
 
 def main():
@@ -23,7 +24,7 @@ def main():
 
 
 def test():
-    df = pd.read_json("prueba.json")
+    df = pd.read_json("Datasets/prueba.json")
     df = df.reindex(columns=["Id", "TagName", "Description"])
     df = df.astype({"Description": str})
 
@@ -36,7 +37,7 @@ def test():
     result = df.to_json(orient="records")
     parsed = json.loads(result)
 
-    with open("prueba_resultdos.json", "w", encoding="utf-8") as f:
+    with open("Datasets/prueba_resultdos.json", "w", encoding="utf-8") as f:
         json.dump(parsed, f, indent=4)
 
 

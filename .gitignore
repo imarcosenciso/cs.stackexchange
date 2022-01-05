@@ -24,3 +24,12 @@ hs_err_pid*
 .vscode/settings.json
 .gitignore
 Data/test.py
+Data/__pycache__/scrape.cpython-38.pyc
+Data/data_aggregation_tests.ipynb
+Data/scrape.py
+Data/Datasets/Comments.xml
+Data/Datasets/comments.json
+Data/Datasets/Posts.xml
+Data/Datasets/Tags.xml
+Data/Datasets/Users.xml
+Data/Datasets/Votes.xml
